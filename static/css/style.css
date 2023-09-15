@@ -1,0 +1,140 @@
+* {
+     box-sizing: border-box !important;
+     transition: ease all 0.5s;
+}
+
+html {
+     scroll-behavior: smooth;
+}
+*,
+*::after,
+*::before {
+     -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+     box-sizing: border-box;
+}
+body{
+            color:white;
+            background: #667db6;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+        .navbar{
+            background-color:rgb(8, 52, 81);
+        }
+
+        .element-bg{
+        background-image: url("blog-welcome.jpg");
+
+  /* Add the blur effect */
+  filter: blur(10px);
+  -webkit-filter: blur(8px);
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+        }
+
+        .element-body{
+        background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 70%;
+  padding: 2rem;
+  text-align: center;
+  }
+
+  .btn-custom {
+            background-color: #FF6B6B;
+            border: none;
+            padding: 1rem;
+            font-size: 18px;
+            margin-top: 30px;
+            transition: background-color 0.3s ease;
+            z-index: 1;
+            color:black;
+            text-decoration:none;
+        }
+        .btn-custom:hover {
+            background-color: #FF4545;
+        }
+
+        .horizontal{
+        padding-top:1rem; !important;
+        }
+
+        .card{
+            background-color:rgba(253, 253, 253, 0.735);
+            box-shadow: 3px 5px 12px rgb(4, 34, 59);
+        }
+        .blog-card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 90%;
+        }
+
+         .blog-content {
+            font-size: 0.9rem;
+        }
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .btn-option{
+            font-size: 1.5rem;
+            padding: 6px 30px;
+            border-radius: 25px;
+            color:white;
+        }
+        .btn-option:hover{
+        color:black;
+        }
+
+
+        .flash-message {
+            position: relative;
+            padding: 10px;
+            border-radius: 2px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .success {
+            background-color: #90ee90;
+            color: white;
+        }
+
+        .error {
+            background-color: #e3242b;
+            color: white;
+        }
+
+        /* Styles for the close button */
+        .close-button {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+        }
+                #toggle-messages {
+            display: none;
+        }
+        #toggle-messages:checked ~ #flash-messages {
+            display: none;
+        }

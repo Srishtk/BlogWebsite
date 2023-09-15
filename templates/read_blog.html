@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}
+Read Blogs
+{% endblock %}
+{% block heading %}
+{%if current_user.username==Null%}
+Glimpses of Latest Blogs
+{%else%}
+Latest Blogs
+{%endif%}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% for a_blog in blog_list %}
+        <div class="col-md-4">
+            <div class="blog-card">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="blog-meta">Author: {{user_list[a_blog.auth_id-1].username}}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="blog-meta">Category: {{ category_names[a_blog.cat_id - 1] }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="blog-meta">Rating: {{a_blog.blog_rating}}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="blog-meta">Read Count: {{a_blog.blog_count}}</p>
+                    </div>
+                </div>
+                <hr>
+                <p class="blog-content">{{a_blog.blog_text|safe|truncate(100)}}</p>
+                <div class="text-center">
+                    <a href="/blogDetail/{{a_blog.blog_id}}/{{category_names[a_blog.cat_id - 1]}}/{{user_list[a_blog.auth_id-1].username}}" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+

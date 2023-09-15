@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}
+My Blogs
+{% endblock %}
+{% block heading %}
+Here are your Blogs!
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% for a_blog in blog_list %}
+        <div class="col-md-6">
+            <div class="blog-card ">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p class="blog-meta"><b>Category:</b> {{ category_names[a_blog.cat_id - 1] }}</p>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-6">
+                        <p class="blog-meta"><b>Rating:</b> {{a_blog.blog_rating}}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="blog-meta"><b>Read Count:</b> {{a_blog.blog_count}}</p>
+                    </div>
+                </div>
+                <hr>
+                <p class="blog-content fs-5"><a href="/modify_blog/{{a_blog.blog_id}}/{{category_names[a_blog.cat_id - 1]}}" class="text-light text-decoration-none">{{a_blog.blog_text|safe|truncate(500)}}</a></p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock%}

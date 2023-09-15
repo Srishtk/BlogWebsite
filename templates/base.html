@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{%block title%} {%endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <!--Including css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <!--Bootstrap icon cdn-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+    <style>
+
+    </style>
+</head>
+<body>
+    <nav class="navbar h-25 px-4">
+        <a href="{{url_for('home')}}" class="navbar-brand text-warning fw-bold fs-2">CREATIV.IO</a>
+        <p class="my-2">
+            <a href="{{url_for('blogs')}}" class=" text-light text-center fs-2 text-decoration-none horizontal">BLOGS</a>
+        </p>
+        <p>
+            {%if current_user.is_authenticated%}
+            <a href="{{url_for('logout')}}" class=" btn btn-outline-warning ">LOG OUT</a>
+            {%else%}
+            <a href="{{url_for('login')}}" class=" btn btn-outline-warning mt-3">Log In</a>
+            <a href="{{url_for('register')}}" class=" btn btn-outline-warning mt-3">Sign Up</a>
+
+            {%endif%}
+        </p>
+     </nav>
+     <input type="checkbox" id="toggle-messages" class="d-none">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div id="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">
+                        <label for="toggle-messages" class="close-button">&times;</label>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <h1 class="text-center m-5"> {%block heading%} {%endblock %}</h1>
+    <div class="content ">
+        {% block content%} {% endblock %}
+    </div>
+</body>
+</html>

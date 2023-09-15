@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title%}
+Blogs
+{%endblock%}
+{% block heading%}
+Welcome to Your Dashboard
+
+{%endblock%}
+
+{% block content%}
+<div class="container text-center dashboard">
+        <h3 class="mt-5 mb-4">Hello, {{current_user.username}}! What would you like to do?</h3>
+        <div class="btn-container">
+            <a href="{{url_for('read_blog')}}" class="btn btn-option btn-info">Read All Blogs</a>
+            <a href="{{url_for('create_blog')}}" class="btn btn-option btn-success">Create a Blog</a>
+            <a href="{{url_for('my_blog')}}" class="btn btn-option btn-danger">My Blogs</a>
+        </div>
+    </div>
+<br>
+    <p class="my-4 px-4">
+        Did not find a suitable Category?
+        <a href="{{url_for('add_category')}}" class=" btn btn-outline-warning mx-4">Add Category</a>
+    </p>
+
+{%endblock%}

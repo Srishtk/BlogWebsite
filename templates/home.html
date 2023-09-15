@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+Home
+{% endblock %}
+{% block heading %}
+Welcome to My blogs
+{% endblock %}
+
+{% block content %}
+<div class="element-bg"></div>
+<div class="element-body text-center">
+  <p class="  fs-4 m-auto w-75">
+  Publish your passions your way. Whether you'd like to share your knowledge, experiences or the latest news,
+  create a unique and beautiful blog.
+</p>
+  <br><br>
+<a href="{{url_for('blogs')}}" class=" btn-custom">Explore More</a>
+</div>
+
+{% endblock %}

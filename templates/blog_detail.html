@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}
+Blog Detail
+{% endblock %}
+{% block heading %}
+
+{% endblock %}
+{% block content %}
+
+  <div class="card mx-auto  p-4 w-75 ">
+    <div class="card-body my-4">
+      <h2 class="fs-3"><b>Author:</b> {{ name }}</h2>
+      <h2 class="fs-3"><b>Category:</b> {{ cat_name }}</h2>
+      <br>
+      <p class="fs-4">
+      {{blog.blog_text|safe}}
+      </p>
+      <hr>
+      <br>
+      <p class="fs-4"><b>Read Count:</b> {{blog.blog_count}}</p>
+      <p class="fs-4"><b>Rating:</b> {{rating}}</p>
+      <p class="fs-4"><b>Total users rated:</b> {{blog.blog_rating}}</p>
+      <p class="fs-4"><b>Publish Date:</b> {{blog_date}}</p>
+    </div>
+  </div>
+{%if current_user.username!=name%}
+  <div class="card mx-auto mt-5 p-4 w-75 fs-3">
+    <div class="card-body">
+      <h3>Feedback Form</h3>
+      <form action="/blogDetail/{{blog.blog_id}}/{{cat_name}}/{{name}}" method="post" class="form">
+        <div class="mt-3">
+          <label for="" class="form-label">Rating</label>
+          <br>
+          <select name="rating" class="form-select">
+            <option value="1"  {% if prev_rating == 1 %} selected {% endif %}>Very bad</option>
+            <option value="2"  {% if prev_rating == 2 %} selected {% endif %}>Bad</option>
+            <option value="3"  {% if prev_rating == 3 %} selected {% endif %}>Okay</option>
+            <option value="4"  {% if prev_rating == 4 %} selected {% endif %}>Good</option>
+            <option value="5"  {% if prev_rating == 5 %} selected {% endif %}>Very good</option>
+          </select>
+        </div>
+        <div class="my-3">
+          <label for="" class="align-middle d-block">Comment</label>
+          <textarea name="comment" class="form-control" cols="30" rows="6">{{comment_text}}</textarea>
+        </div>
+        <input type="text" name="blog_id" class="d-none" value="{{blog.blog_id}}">
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+      </form>
+    </div>
+  </div>
+{%endif%}
+
+
+
+
+{% endblock %}
